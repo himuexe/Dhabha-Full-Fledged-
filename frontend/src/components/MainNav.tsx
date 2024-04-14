@@ -4,7 +4,7 @@ import UsernameMenu from "./UsernameMenu";
 
 
 export default function MainNav() {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated } = useAuth0(); //hook from Auth0
   return (
     <>
       <span className="flex space-x-2 items-center">

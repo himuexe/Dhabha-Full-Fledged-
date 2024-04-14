@@ -15,7 +15,7 @@ const createCurrentUser= async (req: Request, res: Response)=>{
         }
         const newUser = new User(req.body);
         await newUser.save();
-        res.status(201).json(
+        res.status(201).json( //201=> created user
             newUser.toObject()
         );
 

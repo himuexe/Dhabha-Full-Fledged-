@@ -1,4 +1,5 @@
-import { useMutation } from "react-query";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useMutation } from "react-query"; //give our own custom hooks
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 type CreateUserRequest = {
@@ -6,10 +7,14 @@ type CreateUserRequest = {
   email: string;
 };
 export const useCreateMyUser = () => {
+  const {getAccessTokenSilently} = useAuth0(); //get accesstoken from auth0 hook
+
   const createMyUserRequest = async (user: CreateUserRequest) => {
-    const response = await fetch(`${API_BASE_URL}/api/my/user`, {
+    const accessToken = await getAccessTokenSilently();
+    const response = await fetch(`${API_BASE_URL}/api/my/user`, { // sends a request to backend to create a user => index=> myUserRoute=>MyUserController
       method: "POST",
       headers: {
+        Authorization:`Bearer ${accessToken}`, // if will check the token 
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
@@ -18,7 +23,7 @@ export const useCreateMyUser = () => {
       throw new Error("Failed to create user");
     }
   };
-  const {
+  const { // custom hooks
     mutateAsync: createUser,
     isLoading,
     isError,

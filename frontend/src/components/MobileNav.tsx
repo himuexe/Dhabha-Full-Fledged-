@@ -11,7 +11,7 @@ import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import MobileNavLinks from "./MobileNavLinks"; 
 export default function MobileNav() {
-  const { isAuthenticated, loginWithRedirect, user } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, user } = useAuth0(); //Auth0 hook 
   return (
     <Sheet>
       <SheetTrigger>

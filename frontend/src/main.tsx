@@ -4,8 +4,8 @@ import './global.css'
 import { BrowserRouter as Router} from 'react-router-dom'
 import AppRoutes from './AppRoutes'
 import Auth0ProviderWithNavigate from './components/auth/Auth0ProviderWithNavigate'
-import { QueryClient, QueryClientProvider } from 'react-query'
-const queryClient = new QueryClient({
+import { QueryClient, QueryClientProvider } from 'react-query' // used to handel api request from front end
+const queryClient = new QueryClient({   
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
