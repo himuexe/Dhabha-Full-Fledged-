@@ -4,12 +4,14 @@ import Hero from "@/components/Hero"
 
 type Props={
     children:React.ReactNode;
+    showHero?: boolean;
 };
-const Layout = ({children}:Props)=> {
+const Layout = ({children, showHero=false}:Props)=> {
   return (
     <div className="flex flex-col min-h-screen">
         <Header></Header>
-        <Hero></Hero>
+        {showHero && <Hero></Hero>}
+        
         <div className="container mx-auto py-10 flex-1">{children}</div>
         <Footer></Footer>
     </div>
